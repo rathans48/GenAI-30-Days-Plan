@@ -1,0 +1,34 @@
+# ==========================================
+# Day Isolation Guardrails
+# ==========================================
+
+# Ignore initial configuration/setup tracking directories
+/Day 1/
+/Day 2/
+
+# Ignore personal documentation/cheat sheets tracker files
+*Cheatsheet*
+*.docx
+*.txt
+!README.md
+
+# ==========================================
+# Core Virtual Environments (Global Wildcards)
+# ==========================================
+**/venv/
+**/env/
+**/ENV/
+
+# ==========================================
+# Secret Environment Variables & Credentials
+# ==========================================
+**/.env
+**/config.env
+**/*.env
+
+# ==========================================
+# Python Runtime Caches
+# ==========================================
+**/__pycache__/
+**/*.pyc
+**/*.pyo
