@@ -13,7 +13,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 03** | Hands-on Python | Asynchronous API Streaming & Multi-Model Network Tunnels | ✅ Active |
 | **Day 04** | Production Patterns | Deterministic Ingestion via Pydantic & Strict JSON Schemas | ✅ Active |
 | **Day 05** | Vector Fundamentals | High-Dimensional Matrix Math & Local Cosine Search Spaces | ✅ Active |
-| **Day 06** | Production Storage | Vector Databases & Low-Latency HNSW Index Ingestion | ⏳ Scheduled |
+| **Day 06** | Production Storage | Vector Databases & Low-Latency HNSW Index Ingestion | ✅ Active |
 
 ---
 
@@ -34,6 +34,10 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Architecture:** Generates data vectors across local text pools, using a synonym mapping layer to inject contextual weights. Angular distance intersections are processed via custom Cosine Similarity loops ($$\frac{\vec{A} \cdot \vec{B}}{\|\vec{A}\| \|\vec{B}\|}$$). Includes an isolated visualization module executing Principal Component Analysis (PCA) to squash 45-dimensional tokens down into a 2D coordinate plot.
 * **Core Tools:** Python, NumPy, Scikit-Learn (PCA Matrix Processing), Matplotlib.
 
+### 📂 Day 06: Local Vector Database Ingestion
+* **Objective:** Index documents into a dedicated vector database to run high-speed conceptual queries without linear search bottlenecks.
+* **Architecture:** Uses ChromaDB to build a local, persistent database index. It converts text strings into 384-dimensional vectors completely offline using an embedded model and runs Approximate Nearest Neighbor (ANN) searches using an HNSW graph index.
+* **Core Tools:** Python, ChromaDB, ONNX Runtime.
 
 ---
 
