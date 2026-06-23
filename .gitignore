@@ -32,3 +32,6 @@
 **/__pycache__/
 **/*.pyc
 **/*.pyo
+
+# Ignore local database storage layers
+**/chroma_storage/
