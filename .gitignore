@@ -9,7 +9,6 @@
 # Ignore personal documentation/cheat sheets tracker files
 *Cheatsheet*
 *.docx
-*.txt
 !README.md
 
 # ==========================================
@@ -35,3 +34,7 @@
 
 # Ignore local database storage layers
 **/chroma_storage/
+**/chroma_storage_ui/
+
+#Day 7 additional screenshots
+/Additonal Screenshots/

@@ -1,0 +1,5 @@
+Section A1: Remote Work Infrastructure and Hardware Allocation
+The corporate engineering infrastructure grants full remote flexibility. Engineering team instances are allocated a standard equipment credit of 1500 USD per fiscal cycle for dedicated local testing hardware. All peripheral requisition logs must be submitted through the internal asset gateway before the third Friday of each operating quarter.
+
+Section B2: System Outage Response and Failover Escalation Protocols
+When a cluster crash or core database infrastructure failure occurs, on-call support instances must initialize the primary failover pipeline within 8 minutes. If the service bottleneck cannot be resolved by standard automated rolling updates, the on-call engineer must escalate the incident ticket directly to the Infrastructure Operations Director via the secure alert system.
