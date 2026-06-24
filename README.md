@@ -14,6 +14,8 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 04** | Production Patterns | Deterministic Ingestion via Pydantic & Strict JSON Schemas | ✅ Active |
 | **Day 05** | Vector Fundamentals | High-Dimensional Matrix Math & Local Cosine Search Spaces | ✅ Active |
 | **Day 06** | Production Storage | Vector Databases & Low-Latency HNSW Index Ingestion | ✅ Active |
+| **Day 07** | Week 1 Review | Full-Stack Text & PDF Q&A RAG Dashboard (Streamlit) | ⚡ Completed |
+| **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ⏳ Scheduled |
 
 ---
 
@@ -38,6 +40,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Index documents into a dedicated vector database to run high-speed conceptual queries without linear search bottlenecks.
 * **Architecture:** Uses ChromaDB to build a local, persistent database index. It converts text strings into 384-dimensional vectors completely offline using an embedded model and runs Approximate Nearest Neighbor (ANN) searches using an HNSW graph index.
 * **Core Tools:** Python, ChromaDB, ONNX Runtime.
+
+### 📂 Day 07: Week 1 Review & Mini-Project — Full-Stack Interactive RAG Dashboard
+* **Objective:** Consolidate foundational GenAI concepts into a single interactive web interface that enables context-grounded document analysis on demand.
+* **Architecture:** Combines an upstream LLM inference gateway with a persistent local vector storage engine. The application handles dynamic text processing across multi-page PDF layers (`pypdf`) and flexible plaintext data blocks. Relevant context segments are retrieved by mapping user query vectors against local indices via Euclidean distance algorithms, with the resulting completion payloads routed directly into a responsive Streamlit UI layout.
+* **Core Tools:** Python, Streamlit, ChromaDB, PyPDF, OpenRouter APIs.
 
 ---
 
