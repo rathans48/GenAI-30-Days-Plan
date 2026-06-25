@@ -15,7 +15,8 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 05** | Vector Fundamentals | High-Dimensional Matrix Math & Local Cosine Search Spaces | ✅ Active |
 | **Day 06** | Production Storage | Vector Databases & Low-Latency HNSW Index Ingestion | ✅ Active |
 | **Day 07** | Week 1 Review | Full-Stack Text & PDF Q&A RAG Dashboard (Streamlit) | ✅ Active |
-| **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ⏳ Scheduled |
+| **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ⚡ Completed |
+| **Day 09** | Validation Layer | Context Grounding, Hallucination Guards, & Guardrails | ⏳ Scheduled |
 
 ---
 
@@ -45,6 +46,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Consolidate foundational GenAI concepts into a single interactive web interface that enables context-grounded document analysis on demand.
 * **Architecture:** Combines an upstream LLM inference gateway with a persistent local vector storage engine. The application handles dynamic text processing across multi-page PDF layers (`pypdf`) and flexible plaintext data blocks. Relevant context segments are retrieved by mapping user query vectors against local indices via Euclidean distance algorithms, with the resulting completion payloads routed directly into a responsive Streamlit UI layout.
 * **Core Tools:** Python, Streamlit, ChromaDB, PyPDF, OpenRouter APIs.
+
+### 📂 Day 08: RAG Deep Dive — Advanced Chunking Strategies & Ingestion Analysis
+* **Objective:** Move beyond naive data splitting to evaluate how mathematical chunk structural patterns affect downstream vector precision and semantic text recall.
+* **Architecture:** Implemented distinct advanced data engineering scripts. Engineered a script running a head-to-head architectural comparison between Fixed-Size, Recursive Character, and Semantic chunking methodologies inside isolated ChromaDB collections, documenting critical trade-offs regarding token fragmentation, boundary mutilation, and document noise filtering.
+* **Core Tools:** Python, ChromaDB, Advanced Regex Parsing.
 
 ---
 
