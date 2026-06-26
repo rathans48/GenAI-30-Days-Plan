@@ -16,7 +16,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 06** | Production Storage | Vector Databases & Low-Latency HNSW Index Ingestion | ✅ Active |
 | **Day 07** | Week 1 Review | Full-Stack Text & PDF Q&A RAG Dashboard (Streamlit) | ✅ Active |
 | **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ✅ Active |
-| **Day 09** | Validation Layer | Context Grounding, Hallucination Guards, & Guardrails | ✅ Active |
+| **Day 09** | LangChain Core Concepts | LangChain chains, LCEL, LangChain-powered RAG Pipeline| ✅ Active |
 
 ---
 
