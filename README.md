@@ -16,7 +16,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 06** | Production Storage | Vector Databases & Low-Latency HNSW Index Ingestion | ✅ Active |
 | **Day 07** | Week 1 Review | Full-Stack Text & PDF Q&A RAG Dashboard (Streamlit) | ✅ Active |
 | **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ✅ Active |
-| **Day 09** | Validation Layer | Context Grounding, Hallucination Guards, & Guardrails | ⏳ Scheduled |
+| **Day 09** | Validation Layer | Context Grounding, Hallucination Guards, & Guardrails | ✅ Active |
 
 ---
 
@@ -51,6 +51,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Move beyond naive data splitting to evaluate how mathematical chunk structural patterns affect downstream vector precision and semantic text recall.
 * **Architecture:** Implemented distinct advanced data engineering scripts. Engineered a script running a head-to-head architectural comparison between Fixed-Size, Recursive Character, and Semantic chunking methodologies inside isolated ChromaDB collections, documenting critical trade-offs regarding token fragmentation, boundary mutilation, and document noise filtering.
 * **Core Tools:** Python, ChromaDB, Advanced Regex Parsing.
+
+### 📂 Day 09: Framework Orchestration — LangChain-Powered RAG Pipelines
+* **Objective:** Transition from raw procedural data manipulation loops to declarative, component-driven AI orchestration architectures.
+* **Architecture:** Engineered a standalone pipeline script and a full-stack Streamlit dashboard utilizing LangChain Expression Language (LCEL). Replaced manual file-reading routines with standardized `TextLoader` and `PyPDFLoader` modules, managed in-memory Chroma vectors implicitly, and constructed an immutable, component-swappable streaming retrieval graph (`retriever | prompt | llm | parser`).
+* **Core Tools:** LangChain, Python, Streamlit, ChromaDB, OpenAI/OpenRouter APIs.
 
 ---
 
