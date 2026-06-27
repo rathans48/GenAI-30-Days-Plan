@@ -3,8 +3,8 @@
 # ==========================================
 
 # Ignore initial configuration/setup tracking directories
-/Day 1/
-/Day 2/
+/Day 01/
+/Day 02/
 
 # Ignore personal documentation/cheat sheets tracker files
 *Cheatsheet*
