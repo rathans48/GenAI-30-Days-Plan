@@ -17,6 +17,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 07** | Week 1 Review | Full-Stack Text & PDF Q&A RAG Dashboard (Streamlit) | ✅ Active |
 | **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ✅ Active |
 | **Day 09** | LangChain Core Concepts | LangChain chains, LCEL, LangChain-powered RAG Pipeline| ✅ Active |
+| **Day 10** | Validation & Evals | Production Observability via LangSmith & RAGAs Metrics | ✅ Active |
 
 ---
 
@@ -56,6 +57,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Transition from raw procedural data manipulation loops to declarative, component-driven AI orchestration architectures.
 * **Architecture:** Engineered a standalone pipeline script and a full-stack Streamlit dashboard utilizing LangChain Expression Language (LCEL). Replaced manual file-reading routines with standardized `TextLoader` and `PyPDFLoader` modules, managed in-memory Chroma vectors implicitly, and constructed an immutable, component-swappable streaming retrieval graph (`retriever | prompt | llm | parser`).
 * **Core Tools:** LangChain, Python, Streamlit, ChromaDB, OpenAI/OpenRouter APIs.
+
+### 📂 Day 10: Validation & Evals — Production Observability, Tracing, & RAGAs
+* **Objective:** Establish measurable, non-blind metric architectures to scientifically score RAG generation outputs instead of manual spot-checking.
+* **Architecture:** Implemented a standardized testing suite utilizing a 10-pair "Golden Dataset." Wired up runtime telemetry hooks to LangSmith to isolate pipeline execution graphs, breakdown execution latency bottlenecks, and capture system Input/Output parameters. Configured an automated algorithmic grading harness using the RAGAs framework to compute precise vectors for Faithfulness, Answer Relevancy, and Answer Correctness. Integrated a fault-tolerant exponential back-off wrapper loop to handle concurrency throttling and API rate limits.
+* **Core Tools:** LangSmith Tracing, RAGAs Evaluation Framework, Pydantic, Python, ChromaDB.
 
 ---
 
