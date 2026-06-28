@@ -18,6 +18,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ✅ Active |
 | **Day 09** | LangChain Core Concepts | LangChain chains, LCEL, LangChain-powered RAG Pipeline| ✅ Active |
 | **Day 10** | Validation & Evals | Production Observability via LangSmith & RAGAs Metrics | ✅ Active |
+| **Day 11** | Multi-Modal Engines | Vision Capabilities & Browser Voice Command Integration | ✅ Active |
 
 ---
 
@@ -62,6 +63,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Establish measurable, non-blind metric architectures to scientifically score RAG generation outputs instead of manual spot-checking.
 * **Architecture:** Implemented a standardized testing suite utilizing a 10-pair "Golden Dataset." Wired up runtime telemetry hooks to LangSmith to isolate pipeline execution graphs, breakdown execution latency bottlenecks, and capture system Input/Output parameters. Configured an automated algorithmic grading harness using the RAGAs framework to compute precise vectors for Faithfulness, Answer Relevancy, and Answer Correctness. Integrated a fault-tolerant exponential back-off wrapper loop to handle concurrency throttling and API rate limits.
 * **Core Tools:** LangSmith Tracing, RAGAs Evaluation Framework, Pydantic, Python, ChromaDB.
+
+### 📂 Day 11: Multi-Modal Vision & Voice Interfaces
+* **Objective:** Expand classical text-only LLM pipelines into multi-modal systems capable of processing real-time visual assets and client-side vocal inputs.
+* **Architecture:** Developed an interactive multi-modal processing workspace built on Streamlit. Integrated a client-side, browser-native Web Speech STT (Speech-to-Text) module to intercept microphone audio streams and transcribe operator queries completely free of cloud compute overhead. Configured an automated base64 file serializer to pack localized pixel arrays into standard OpenAI payload specs. Wired the backend into OpenRouter’s dynamic multi-modal abstraction gateway to balance and route incoming joint visual-textual tokens without experiencing downstream model deprecations or 429 rate limit errors.
+* **Core Tools:** Streamlit, OpenRouter Gateway API, Web Speech API Architecture, Python, Base64 Stream Encoding.
 
 ---
 
