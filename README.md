@@ -10,15 +10,16 @@ A structured, production-focused roadmap tracking development patterns from theo
 | :--- | :--- | :--- | :--- |
 | **Day 01** | Theory & Intuition | Core LLM Mechanics, Tokenization, & Context Architectures | ⚡ Completed |
 | **Day 02** | Craft & Technique | Advanced Prompt Design, Structural Logic Patterns, & CoT | ⚡ Completed |
-| **Day 03** | Hands-on Python | Asynchronous API Streaming & Multi-Model Network Tunnels | ✅ Active |
-| **Day 04** | Production Patterns | Deterministic Ingestion via Pydantic & Strict JSON Schemas | ✅ Active |
-| **Day 05** | Vector Fundamentals | High-Dimensional Matrix Math & Local Cosine Search Spaces | ✅ Active |
-| **Day 06** | Production Storage | Vector Databases & Low-Latency HNSW Index Ingestion | ✅ Active |
-| **Day 07** | Week 1 Review | Full-Stack Text & PDF Q&A RAG Dashboard (Streamlit) | ✅ Active |
-| **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ✅ Active |
-| **Day 09** | LangChain Core Concepts | LangChain chains, LCEL, LangChain-powered RAG Pipeline| ✅ Active |
-| **Day 10** | Validation & Evals | Production Observability via LangSmith & RAGAs Metrics | ✅ Active |
-| **Day 11** | Multi-Modal Engines | Vision Capabilities & Browser Voice Command Integration | ✅ Active |
+| **Day 03** | Hands-on Python | Asynchronous API Streaming & Multi-Model Network Tunnels | ⚡ Completed |
+| **Day 04** | Production Patterns | Deterministic Ingestion via Pydantic & Strict JSON Schemas | ⚡ Completed |
+| **Day 05** | Vector Fundamentals | High-Dimensional Matrix Math & Local Cosine Search Spaces | ⚡ Completed |
+| **Day 06** | Production Storage | Vector Databases & Low-Latency HNSW Index Ingestion | ⚡ Completed |
+| **Day 07** | Week 1 Review | Full-Stack Text & PDF Q&A RAG Dashboard (Streamlit) | ⚡ Completed |
+| **Day 08** | RAG Deep Dive | Advanced Chunking Strategies & Metadata Filtering Layers | ⚡ Completed |
+| **Day 09** | LangChain Core Concepts | LangChain chains, LCEL, LangChain-powered RAG Pipeline| ⚡ Completed |
+| **Day 10** | Validation & Evals | Production Observability via LangSmith & RAGAs Metrics | ⚡ Completed |
+| **Day 11** | Multi-Modal Engines | Vision Capabilities & Browser Voice Command Integration | ⚡ Completed |
+| **Day 12** | Autonomous Agents | Custom ReAct Loop Engine From Scratch (No Frameworks) | ⚡ Completed |
 
 ---
 
@@ -68,6 +69,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Expand classical text-only LLM pipelines into multi-modal systems capable of processing real-time visual assets and client-side vocal inputs.
 * **Architecture:** Developed an interactive multi-modal processing workspace built on Streamlit. Integrated a client-side, browser-native Web Speech STT (Speech-to-Text) module to intercept microphone audio streams and transcribe operator queries completely free of cloud compute overhead. Configured an automated base64 file serializer to pack localized pixel arrays into standard OpenAI payload specs. Wired the backend into OpenRouter’s dynamic multi-modal abstraction gateway to balance and route incoming joint visual-textual tokens without experiencing downstream model deprecations or 429 rate limit errors.
 * **Core Tools:** Streamlit, OpenRouter Gateway API, Web Speech API Architecture, Python, Base64 Stream Encoding.
+
+### 📂 Day 12: Introduction to Autonomous AI Agents & The ReAct Loop
+* **Objective:** Understand and engineer the foundational runtime loops that allow LLMs to act as autonomous problem-solving engines using tools, without relying on third-party orchestration frameworks.
+* **Architecture:** Developed a native Reason-and-Act (ReAct) execution loop from scratch using pure Python. Implemented a custom text parser to intercept structured LLM syntax patterns (`Action: tool_name[param]`), route variables dynamically to local tools (a math calculator and the Tavily live web-search API), and pipe the real-world output back into the conversation's short-term history memory state. Built robust error guardrails to gracefully handle API rate limits, quote stripping, and formatting failures.
+* **Core Tools:** Python, OpenRouter Meta-Gateway, Tavily Search API, Regular Expressions (Regex).
 
 ---
 
