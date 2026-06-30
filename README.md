@@ -20,6 +20,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 10** | Validation & Evals | Production Observability via LangSmith & RAGAs Metrics | ⚡ Completed |
 | **Day 11** | Multi-Modal Engines | Vision Capabilities & Browser Voice Command Integration | ⚡ Completed |
 | **Day 12** | Autonomous Agents | Custom ReAct Loop Engine From Scratch (No Frameworks) | ⚡ Completed |
+| **Day 13** | Agent Orchestration | Building Stateful Graph Machines with LangGraph & HITL | ⚡ Completed |
 
 ---
 
@@ -74,6 +75,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Understand and engineer the foundational runtime loops that allow LLMs to act as autonomous problem-solving engines using tools, without relying on third-party orchestration frameworks.
 * **Architecture:** Developed a native Reason-and-Act (ReAct) execution loop from scratch using pure Python. Implemented a custom text parser to intercept structured LLM syntax patterns (`Action: tool_name[param]`), route variables dynamically to local tools (a math calculator and the Tavily live web-search API), and pipe the real-world output back into the conversation's short-term history memory state. Built robust error guardrails to gracefully handle API rate limits, quote stripping, and formatting failures.
 * **Core Tools:** Python, OpenRouter Meta-Gateway, Tavily Search API, Regular Expressions (Regex).
+
+### 📂 Day 13: LangGraph for Agentic Workflows & Human-in-the-Loop Orchestration
+* **Objective:** Transition from unconstrained, text-parsed single-agent loops into structured, deterministic, stateful graph machines capable of complex routing and human verification gates.
+* **Architecture:** Engineered a stateful research agent architecture utilizing LangGraph to handle cyclic workflows via defined Nodes, Edges, and State parameters. Configured an append-only state reducer pattern using an Annotated list of base messages to preserve an unalterable multi-turn conversation history thread. Implemented short-term in-memory state persistence utilizing a `MemorySaver` checkpointer. Embedded a synchronized breakpoint boundary (`interrupt_before`) directly ahead of the external web search tool node, creating a reliable Human-in-the-Loop (HITL) manual verification gate that freezes execution mid-stream and safely rehydrates the active thread context upon approval. Integrated native ASCII graph tree compilation for direct terminal visualization.
+* **Core Tools:** LangGraph, LangChain Core Primitives, Tavily Search API Engine, Grandalf Graph Layout, Python.
 
 ---
 
