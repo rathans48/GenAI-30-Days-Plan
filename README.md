@@ -24,6 +24,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 14** | Multi-Agent Coordination | Hierarchical Agent Teams & Cross-Node Communication | ⚡ Completed |
 | **Day 15** | Tool Integration | Hybrid Core Gateways, Tool Schemas, and Mock API Sync | ⚡ Completed |
 | **Day 16** | Week 2 Review | Advanced Retrieval | Production Hybrid RAG System with Lexical Re-ranking | ⚡ Completed |
+| **Day 17** | Custom Models | Fine-Tuning Pipelines & Local Sovereign Inference | ⚡ Completed |
 ---
 
 ## Active Implementation Repositories (Days 1–5)
@@ -97,6 +98,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Mitigate the structural limitations of standard vector-similarity retrieval models by engineering a multi-layered, hybrid semantic-lexical search engine for code repositories and dense system documentation.
 * **Architecture:** Engineered a stateful multi-stage RAG validation pipeline inside an interactive user runtime interface. Implemented dual-engine tool retrieval consisting of an email parsing node and an automated GitHub tracker integration. Designed a strict regex-driven parameter extraction boundary to safely isolate raw text outputs from underlying model context spaces. Built an explicit search optimization layer using tokenized text normalization rules to prevent literal line-break string parsing failures during JSON de-serialization. Structured conditional routing logic that isolates critical system bugs while filtering out secondary pricing inquiries.
 * **Core Tools:** LangChain Core Expression Language (LCEL), OpenRouter API Portals, Python Regular Expression Parsers, Streamlit / Interactive Console UI.
+
+### 📂 Day 17: Fine-Tuning Customization & Sovereign Local Inference
+* **Objective:** Establish a robust model selection decision framework and evaluate cloud-based parameter tuning against sovereign, local offline inference models for private deployment.
+* **Architecture:** Formulated an architectural evaluation matrix contrasting Prompt Engineering, RAG structures, and Fine-Tuning scopes. Structured a custom training dataset in JSON Lines (`.jsonl`) schema designed to compress style instruction prompt overhead into structural internal weights. Configured an asynchronous OpenAI remote customization pipeline to register file entities and handle automated training triggers. Provisioned an offline enterprise-tier local model inference sandbox via Ollama, mapping out persistent model assets to storage configurations on the `D:` drive array. Programmatically routed native Python orchestration flows to interface directly with local multi-gigabyte models using standard base URL port interception.
+* **Core Tools:** OpenAI Fine-Tuning API, Ollama Local Server, LangChain OpenRouter/OpenAI Adapters, Python.
 
 ---
 
