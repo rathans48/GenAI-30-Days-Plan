@@ -25,6 +25,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 15** | Tool Integration | Hybrid Core Gateways, Tool Schemas, and Mock API Sync | ⚡ Completed |
 | **Day 16** | Week 2 Review | Advanced Retrieval | Production Hybrid RAG System with Lexical Re-ranking | ⚡ Completed |
 | **Day 17** | Custom Models | Fine-Tuning Pipelines & Local Sovereign Inference | ⚡ Completed |
+| **Day 18** | AI Governance | Guardrails, Input Firewalls, & Hallucination Audits | ⚡ Completed |
 ---
 
 ## Active Implementation Repositories (Days 1–5)
@@ -103,6 +104,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Establish a robust model selection decision framework and evaluate cloud-based parameter tuning against sovereign, local offline inference models for private deployment.
 * **Architecture:** Formulated an architectural evaluation matrix contrasting Prompt Engineering, RAG structures, and Fine-Tuning scopes. Structured a custom training dataset in JSON Lines (`.jsonl`) schema designed to compress style instruction prompt overhead into structural internal weights. Configured an asynchronous OpenAI remote customization pipeline to register file entities and handle automated training triggers. Provisioned an offline enterprise-tier local model inference sandbox via Ollama, mapping out persistent model assets to storage configurations on the `D:` drive array. Programmatically routed native Python orchestration flows to interface directly with local multi-gigabyte models using standard base URL port interception.
 * **Core Tools:** OpenAI Fine-Tuning API, Ollama Local Server, LangChain OpenRouter/OpenAI Adapters, Python.
+
+### 📂 Day 18: Guardrails, Input Safety Envelopes, & Hallucination Audits
+* **Objective:** Safeguard internal application contexts by engineering proactive input injection interceptors and automated post-generation output grounding verification gates.
+* **Architecture:** Formulated an integrated input/output security pipeline acting as an application firewall layer. Designed regex-driven input filtering arrays to block malicious jailbreak and prompt instruction overrides before OpenRouter API submission loops. Implemented an automated text-intersection grounding validator to measure token metrics against source documentation arrays, removing grammar noise via stop-word tokenization filters. Established an automated governance boundary floor that automatically flags and drops any generated responses containing unverified factual hallucinations before delivery to the client.
+* **Core Tools:** Python Regular Expression Tooling, Grounding Intersection Verification Matrices, LangChain Message Primitives, OpenRouter Inference Gateway.
 
 ---
 
