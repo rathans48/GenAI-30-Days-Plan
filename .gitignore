@@ -41,3 +41,15 @@
 
 # Local Streamlit temporary upload vaults
 temp_pdf_vault/
+
+# Dependencies & Build Artifacts (Bloat)
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# IDE / System specific files
+.vscode/
+.idea/
+.DS_Store
+thumbs.db
