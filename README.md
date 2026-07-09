@@ -27,6 +27,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 17** | Custom Models | Fine-Tuning Pipelines & Local Sovereign Inference | ⚡ Completed |
 | **Day 18** | AI Governance | Guardrails, Input Firewalls, & Hallucination Audits | ⚡ Completed |
 | **Day 19** | Full-Stack App | FastAPI Async Streaming Engine & React SSE UI Client | ⚡ Completed |
+| **Day 20** | Database Layers | Hybrid Postgres Storage (pgvector) & Serverless Redis Caching | ⚡ Completed |
 ---
 
 ## Active Implementation Repositories (Days 1–5)
@@ -115,6 +116,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Architect a high-throughput, secure backend server engine paired with a modern reactive frontend interface capable of rendering authenticated token streams over unidirectional text/event-stream communication channels.
 * **Architecture:** Formulated an asynchronous ASGI service topology via FastAPI backed by Uvicorn event loops. Engineered an in-memory sliding window queue map to enforce a rolling-window rate-limiting guard (max 5 requests per minute), preventing downstream API key abuse. Integrated a custom JWT user session validation interceptor module compatible with standard query parameter extraction for browser-tab testing fallback streams. Developed a real-time Server-Sent Events (SSE) packet delivery engine using LangChain's non-blocking asynchronous primitives (`astream`), yielding incremental tokens immediately upon generation. Configured a high-fidelity transaction metrics tracker to compute total execution token costs relative to baseline parameter pricing weights. Built an optimized React user interface via Vite, using browser `EventSource` listening streams to handle continuous network packet parsing and seamless string character-by-character appending on a customized dark-mode terminal canvas.
 * **Core Tools:** FastAPI, Uvicorn ASGI Server, PyJWT, Vite, React Engine, LangChain Async Streams, OpenRouter Portal Matrix, HTML5 EventSource Browser APIs.
+
+### 📂 Day 20: Persistent Hybrid Storage & In-Memory Cost Caching
+* **Objective:** Transition the application from a stateless execution loop into an enterprise-grade persistent engine utilizing unified vector/relational storage and high-speed serverless memory buffers.
+* **Architecture:** Integrated Supabase (PostgreSQL) to serve as a unified hybrid database infrastructure. Prepared the schema for upcoming Capstone embedding arrays by configuring the `pgvector` extension alongside a relational logging architecture (`chat_messages`) to permanently track user session histories under explicit user identity parameters. Implemented an exact-match caching pipeline using Redis (via Upstash serverless infrastructure) over a native secure protocol (`rediss://`) to intercept incoming requests before hitting downstream LLM pathways. Engineered a SHA-256 cryptographic hashing module to map raw user string prompts to lightweight cache keys. The asynchronous generator stream now resolves identical questions with sub-millisecond cached responses, reducing public cloud token expenditures to zero. On cache misses, the pipeline streams live data chunks while asynchronously executing dual-write synchronization blocks to update both the Redis time-to-live (TTL) buffer and the remote cloud Postgres relational tables seamlessly upon stream completion. Resolved critical system environmental traps involving PostgREST schema reloads, Windows file-lock cache updates, and path concatenation anomalies.
+* **Core Tools:** Supabase, PostgreSQL Client SDK, pgvector Extension, Upstash Serverless Redis, PyJWT Session Interceptors, Cryptographic Hashing (SHA-256), Python Asyncio.
 
 ---
 
