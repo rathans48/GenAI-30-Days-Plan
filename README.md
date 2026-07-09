@@ -23,7 +23,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 13** | Agent Orchestration | Building Stateful Graph Machines with LangGraph & HITL | ⚡ Completed |
 | **Day 14** | Multi-Agent Coordination | Hierarchical Agent Teams & Cross-Node Communication | ⚡ Completed |
 | **Day 15** | Tool Integration | Hybrid Core Gateways, Tool Schemas, and Mock API Sync | ⚡ Completed |
-| **Day 16** | Week 2 Review | Advanced Retrieval | Production Hybrid RAG System with Lexical Re-ranking | ⚡ Completed |
+| **Day 16** | Week 2 Review | Advanced Retrieval, Production Hybrid RAG System with Lexical Re-ranking | ⚡ Completed |
 | **Day 17** | Custom Models | Fine-Tuning Pipelines & Local Sovereign Inference | ⚡ Completed |
 | **Day 18** | AI Governance | Guardrails, Input Firewalls, & Hallucination Audits | ⚡ Completed |
 | **Day 19** | Full-Stack App | FastAPI Async Streaming Engine & React SSE UI Client | ⚡ Completed |
