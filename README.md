@@ -28,6 +28,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 18** | AI Governance | Guardrails, Input Firewalls, & Hallucination Audits | ⚡ Completed |
 | **Day 19** | Full-Stack App | FastAPI Async Streaming Engine & React SSE UI Client | ⚡ Completed |
 | **Day 20** | Database Layers | Hybrid Postgres Storage (pgvector) & Serverless Redis Caching | ⚡ Completed |
+| **Day 21** | LLMOps & Costs  | Token Counting, Cost Estimation, Dynamic Model Routing, & Langfuse Tracing | ⚡ Completed |
 ---
 
 ## Active Implementation Repositories
@@ -121,6 +122,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Transition the application from a stateless execution loop into an enterprise-grade persistent engine utilizing unified vector/relational storage and high-speed serverless memory buffers.
 * **Architecture:** Integrated Supabase (PostgreSQL) to serve as a unified hybrid database infrastructure. Prepared the schema for upcoming Capstone embedding arrays by configuring the `pgvector` extension alongside a relational logging architecture (`chat_messages`) to permanently track user session histories under explicit user identity parameters. Implemented an exact-match caching pipeline using Redis (via Upstash serverless infrastructure) over a native secure protocol (`rediss://`) to intercept incoming requests before hitting downstream LLM pathways. Engineered a SHA-256 cryptographic hashing module to map raw user string prompts to lightweight cache keys. The asynchronous generator stream now resolves identical questions with sub-millisecond cached responses, reducing public cloud token expenditures to zero. On cache misses, the pipeline streams live data chunks while asynchronously executing dual-write synchronization blocks to update both the Redis time-to-live (TTL) buffer and the remote cloud Postgres relational tables seamlessly upon stream completion. Resolved critical system environmental traps involving PostgREST schema reloads, Windows file-lock cache updates, and path concatenation anomalies.
 * **Core Tools:** Supabase, PostgreSQL Client SDK, pgvector Extension, Upstash Serverless Redis, PyJWT Session Interceptors, Cryptographic Hashing (SHA-256), Python Asyncio.
+
+### 📂 Day 21: LLMOps Architecture, Dynamic Model Routing, & Semantic Caching
+* **Objective:** Transition the stack into a production-grade orchestration engine featuring live telemetry tracking, semantic vector caching, and a context-weighted multi-tier model selection router.
+* **Architecture:** Integrated the Langfuse telemetry ecosystem into an active FastAPI asynchronous streaming backend using stable context manager scopes (`start_as_current_observation`) and structural parameters (`propagate_attributes`) to track user identities, token weights, latency, and real-world dollar expenditures dynamically. Engineered an intelligent in-memory semantic cache array that processes text strings through an `openrouter/openai/text-embedding-3-small` embedding module to perform vector similarity evaluations. Queries matching a strict normalized floating-point cosine similarity metric threshold ($\text{Similarity} \ge 0.88$) bypass downstream computation completely to return instant, zero-cost responses. Implemented an automated complexity evaluation gateway router that inspects user prompt sizes and keyword signals (*architect, optimize, security fault*) to split traffic between a budget tier (`gpt-4o-mini`) and a premium tier (`gpt-4o`) dynamically via LiteLLM abstraction bindings. Resolving token reservation constraints (`HTTP 402/429`) on free gateway tiers by explicitly clamping maximum output allowances (`max_tokens=500`).
+* **Core Tools:** Langfuse Cloud Observability, LiteLLM Abstraction Layer, Text Embeddings, Cosine Distance Math Framework, NumPy Arrays, Token Counters, Multi-Tier Route Selectors.
 
 ---
 
