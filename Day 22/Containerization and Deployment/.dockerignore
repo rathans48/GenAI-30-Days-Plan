@@ -1,0 +1,20 @@
+venv/
+.env
+__pycache__/
+*.pyc
+.git/
+.docx
+/Day 01/
+/Day 02/
+**/chroma_storage/
+**/chroma_storage_ui/
+/Additonal Screenshots/
+temp_pdf_vault/
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vscode/
+.idea/
+.DS_Store
+thumbs.db
