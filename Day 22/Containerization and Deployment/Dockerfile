@@ -18,6 +18,7 @@ COPY requirements.txt .
 
 # 6. Installation: Install dependencies into the container isolation bubble
 RUN pip install --no-cache-dir --upgrade pip && \
+    pip uninstall jwt pyjwt -y && \
     pip install --no-cache-dir -r requirements.txt
 
 # 7. Code Mapping: Copy the rest of the application files into the working directory
