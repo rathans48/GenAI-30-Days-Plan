@@ -86,7 +86,7 @@ async def optimized_llm_streamer(user_prompt: str, user_id: str):
 def get_mock_token():
     """Generates an immediate localized session signature token for development testing."""
     import jwt
-    SECRET_KEY = os.getenv("JWT_SECRET_KEY", "devmind_fallback_secure_hash_secret")
+    SECRET_KEY = os.getenv("JWT_SECRET_KEY", "production_fallback_secure_hash_secret_string")
     return {"access_token": jwt.encode({"sub": "rathan_s_dev"}, SECRET_KEY, algorithm="HS256"), "token_type": "bearer"}
 
 @app.get("/api/stream-query")
