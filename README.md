@@ -29,6 +29,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 19** | Full-Stack App | FastAPI Async Streaming Engine & React SSE UI Client | ⚡ Completed |
 | **Day 20** | Database Layers | Hybrid Postgres Storage (pgvector) & Serverless Redis Caching | ⚡ Completed |
 | **Day 21** | LLMOps & Costs  | Token Counting, Cost Estimation, Dynamic Model Routing, & Langfuse Tracing | ⚡ Completed |
+| **Day 22** | Containerization | Dockerization, Cloud PaaS Deployment, & GitHub Actions CI/CD Pipelines | ⚡ Completed |
 ---
 
 ## Active Implementation Repositories
@@ -127,6 +128,11 @@ A structured, production-focused roadmap tracking development patterns from theo
 * **Objective:** Transition the stack into a production-grade orchestration engine featuring live telemetry tracking, semantic vector caching, and a context-weighted multi-tier model selection router.
 * **Architecture:** Integrated the Langfuse telemetry ecosystem into an active FastAPI asynchronous streaming backend using stable context manager scopes (`start_as_current_observation`) and structural parameters (`propagate_attributes`) to track user identities, token weights, latency, and real-world dollar expenditures dynamically. Engineered an intelligent in-memory semantic cache array that processes text strings through an `openrouter/openai/text-embedding-3-small` embedding module to perform vector similarity evaluations. Queries matching a strict normalized floating-point cosine similarity metric threshold ($\text{Similarity} \ge 0.88$) bypass downstream computation completely to return instant, zero-cost responses. Implemented an automated complexity evaluation gateway router that inspects user prompt sizes and keyword signals (*architect, optimize, security fault*) to split traffic between a budget tier (`gpt-4o-mini`) and a premium tier (`gpt-4o`) dynamically via LiteLLM abstraction bindings. Resolving token reservation constraints (`HTTP 402/429`) on free gateway tiers by explicitly clamping maximum output allowances (`max_tokens=500`).
 * **Core Tools:** Langfuse Cloud Observability, LiteLLM Abstraction Layer, Text Embeddings, Cosine Distance Math Framework, NumPy Arrays, Token Counters, Multi-Tier Route Selectors.
+
+### 📂 Day 22: Containerization, Cloud Deployment, & Automated CI/CD Pipelines
+* **Objective:** Dockerize the full-stack AI application gateway environment to build a highly portable, containerized infrastructure layer backed by an automated CI/CD pipeline.
+* **Architecture:** Engineered an optimized, environment-agnostic Docker image based on a streamlined Python base layer (`python:3.11-slim`), utilizing explicit environment configurations (`PYTHONUNBUFFERED=1`) and `.dockerignore` filters to ensure high-velocity container builds. Successfully deployed the container engine to a cloud infrastructure platform (Render/Railway), isolating sensitive access tokens (`OPENROUTER_API_KEY`, `LANGFUSE_KEYS`) safely inside secure environment variable dashboards. Structured an active DevOps pipeline using GitHub Actions (`deploy.yml`) that triggers automatically upon code merges to the master system layer—running automated linting checks before executing secure, automated webhooks to orchestrate live container rebuilds.
+* **Core Tools:** Docker Engine, Container Layers, Render PaaS Systems, Environment Variable Injectors, GitHub Actions Workflows, Webhook Orchestrators.
 
 ---
 
