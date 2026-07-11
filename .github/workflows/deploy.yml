@@ -1,0 +1,12 @@
+Your-Master-Repository/
+│
+├── .git/                  ◄--- (Existing hidden Git folder)
+├── .github/               ◄--- (You created this)
+│   └── workflows/         ◄--- (You created this)
+│       └── deploy.yml     ◄--- (Your CI/CD configuration file)
+│
+├── Day 21/
+└── Day 22/
+    ├── Dockerfile
+    ├── main.py
+    └── requirements.txt
