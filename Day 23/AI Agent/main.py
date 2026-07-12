@@ -25,7 +25,7 @@ async def process_pr_review(pr_data: dict):
         }
         
         async with httpx.AsyncClient() as client:
-            response = await client.get(diff_url, headers=headers)
+            response = await client.get(diff_url, headers=headers, follow_redirects=True)
             if response.status_code != 200:
                 print(f"❌ Failed to fetch diff. Status code: {response.status_code}")
                 return
