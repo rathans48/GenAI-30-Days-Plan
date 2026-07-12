@@ -16,15 +16,29 @@ class PullRequestReview(BaseModel):
 def execute_review_graph(raw_diff: str) -> str:
     """Executes code analysis and maps results into clean markdown formatting"""
     
-    # FIX: Explicitly included the word 'JSON' to satisfy strict API schema regulations
+    # FIX: Instruct the model exactly how to map the JSON keys at the absolute root level
     prompt = f"""
     You are an expert principal software architecture reviewer. 
-    Analyze the following unified git diff input and return your evaluation strictly as a valid JSON object:
+    Analyze the provided unified git diff input and return your complete evaluation strictly as a valid JSON object.
     
+    CRITICAL: The JSON object must contain these exact keys at the absolute root level. Do not wrap this data inside a top-level "evaluation", "report", or "result" key.
+    
+    JSON Schema Template:
+    {{
+        "overall_score": <int between 1 and 10>,
+        "critical_flaws": [
+            {{
+                "file_path": "<string>",
+                "line_number": "<string>",
+                "issue_type": "<string>",
+                "explanation": "<string>"
+            }}
+        ],
+        "suggested_docstrings": "<string containing clean PEP 257 docstrings for new methods>"
+    }}
+    
+    Git Diff Target Input:
     {raw_diff}
-    
-    Identify potential bugs, architectural flaws, missing resource cleanup wrappers, or performance bottlenecks. 
-    Additionally, generate clean docstrings for any newly introduced functions or modules.
     """
     
     response = completion(
