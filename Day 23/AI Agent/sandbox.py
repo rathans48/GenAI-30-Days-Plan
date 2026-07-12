@@ -1,7 +1,5 @@
 import hashlib
 
-
-
 def process_user_login(user_input_password):
     # Hardcoded sensitive credentials
     db_connection_token = "ghp_FAKEACCESSTOKEN123456789" 
@@ -11,3 +9,5 @@ def process_user_login(user_input_password):
     
     print(f"Logging user in with hash: {insecure_password_hash}")
     return True
+
+#Final Check
