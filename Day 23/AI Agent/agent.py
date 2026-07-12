@@ -16,8 +16,10 @@ class PullRequestReview(BaseModel):
 def execute_review_graph(raw_diff: str) -> str:
     """Executes code analysis and maps results into clean markdown formatting"""
     
+    # FIX: Explicitly included the word 'JSON' to satisfy strict API schema regulations
     prompt = f"""
-    You are an expert principal software architecture reviewer. Analyze the following unified git diff input:
+    You are an expert principal software architecture reviewer. 
+    Analyze the following unified git diff input and return your evaluation strictly as a valid JSON object:
     
     {raw_diff}
     
@@ -28,12 +30,12 @@ def execute_review_graph(raw_diff: str) -> str:
     response = completion(
         model="openrouter/openai/gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}],
-        response_format={"type": "json_object"} # Formats output wrapper layout
+        response_format={"type": "json_object"}
     )
     
     raw_content = response.choices[0].message.content.strip()
     
-    # FIX: Clean out structural markdown code blocks if the LLM returned them
+    # Clean out structural markdown code blocks if the LLM returned them
     if raw_content.startswith("```json"):
         raw_content = raw_content.replace("```json", "", 1).rstrip("```").strip()
     elif raw_content.startswith("```"):
