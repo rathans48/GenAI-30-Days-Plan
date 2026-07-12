@@ -9,31 +9,48 @@ GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
 async def process_pr_review(pr_data: dict):
     """Async background worker to fetch diff and run agent review loop"""
-    diff_url = pr_data["pull_request"]["diff_url"]
-    comments_url = pr_data["pull_request"]["comments_url"]
-    
-    # Fetch the raw code diff from GitHub
-    headers = {
-        "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github.v3.diff"
-    }
-    
-    async with httpx.AsyncClient() as client:
-        response = await client.get(diff_url, headers=headers)
-        if response.status_code != 200:
-            return
+    try:
+        github_token = os.getenv("GITHUB_TOKEN")
+        diff_url = pr_data["pull_request"]["diff_url"]
         
-        raw_diff = response.text
+        # FIX: Dynamically construct the correct timeline conversation comment path
+        comments_url = f"{pr_data['pull_request']['issue_url']}/comments"
         
-        # Trigger Agent Node Sequence
-        review_summary = execute_review_graph(raw_diff)
+        print(f"🚀 [AGENT] Fetching code diff from: {diff_url}")
         
-        # Post the markdown analysis back onto the PR
-        post_headers = {
-            "Authorization": f"token {GITHUB_TOKEN}",
-            "Accept": "application/vnd.github.v3+json"
+        headers = {
+            "Authorization": f"token {github_token}",
+            "Accept": "application/vnd.github.v3.diff"
         }
-        await client.post(comments_url, headers=post_headers, json={"body": review_summary})
+        
+        async with httpx.AsyncClient() as client:
+            response = await client.get(diff_url, headers=headers)
+            if response.status_code != 200:
+                print(f"❌ Failed to fetch diff. Status code: {response.status_code}")
+                return
+            
+            raw_diff = response.text
+            
+            # Trigger Agent Sequence
+            review_summary = execute_review_graph(raw_diff)
+            
+            # Post the markdown analysis back onto the PR
+            post_headers = {
+                "Authorization": f"token {github_token}",
+                "Accept": "application/vnd.github.v3+json"
+            }
+            post_res = await client.post(comments_url, headers=post_headers, json={"body": review_summary})
+            
+            if post_res.status_code == 201:
+                print("🎯 [SUCCESS] Review comment posted perfectly to GitHub PR!")
+            else:
+                print(f"❌ GitHub API post failed: {post_res.status_code} - {post_res.text}")
+                
+    except Exception as background_err:
+        # Expose any hidden errors clearly in your Render console window
+        print(f"❌ [BACKGROUND TASK CRASH]: {str(background_err)}")
+        import traceback
+        traceback.print_exc()
 
 @app.post("/webhook")
 async def github_webhook_listener(

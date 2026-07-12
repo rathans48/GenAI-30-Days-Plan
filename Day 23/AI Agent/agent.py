@@ -25,15 +25,22 @@ def execute_review_graph(raw_diff: str) -> str:
     Additionally, generate clean docstrings for any newly introduced functions or modules.
     """
     
-    # Force JSON structured schema extraction using LiteLLM/OpenRouter
     response = completion(
         model="openrouter/openai/gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}],
-        response_format=PullRequestReview
+        response_format={"type": "json_object"} # Formats output wrapper layout
     )
     
-    # Parse output schema straight into formatting generators
-    result = PullRequestReview.model_validate_json(response.choices[0].message.content)
+    raw_content = response.choices[0].message.content.strip()
+    
+    # FIX: Clean out structural markdown code blocks if the LLM returned them
+    if raw_content.startswith("```json"):
+        raw_content = raw_content.replace("```json", "", 1).rstrip("```").strip()
+    elif raw_content.startswith("```"):
+        raw_content = raw_content.replace("```", "", 1).rstrip("```").strip()
+        
+    # Validate the cleaned data string directly against the Pydantic template
+    result = PullRequestReview.model_validate_json(raw_content)
     
     # Build clean markdown response payload
     markdown_report = f"## 🤖 Automated Code Review Report (Score: {result.overall_score}/10)\n\n"
