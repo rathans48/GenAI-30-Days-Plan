@@ -1,39 +1,20 @@
 import os
 import httpx
-import hashlib
-from fastapi import FastAPI, Request, Header, BackgroundTasks
-from fastapi.middleware.cors import CORSMiddleware
-# Import your agent function from the companion file right next to it
-from agent import execute_review_graph 
+from fastapi import FastAPI, Request, Header, HTTPException, BackgroundTasks
+from pydantic import BaseModel
 
 app = FastAPI()
 
-# Day 22 CORS Security Layer
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
-# Day 22 Working Endpoint
-@app.get("/mock-token")
-def get_mock_token():
-    return {
-        "access_token": "mock_devmind_token_xyz123",
-        "token_type": "bearer",
-        "status": "authenticated"
-    }
-
-# Day 23 Async GitHub Webhook Background Worker
 async def process_pr_review(pr_data: dict):
-    github_token = os.getenv("GITHUB_TOKEN")
+    """Async background worker to fetch diff and run agent review loop"""
     diff_url = pr_data["pull_request"]["diff_url"]
     comments_url = pr_data["pull_request"]["comments_url"]
     
+    # Fetch the raw code diff from GitHub
     headers = {
-        "Authorization": f"token {github_token}",
+        "Authorization": f"token {GITHUB_TOKEN}",
         "Accept": "application/vnd.github.v3.diff"
     }
     
@@ -43,33 +24,33 @@ async def process_pr_review(pr_data: dict):
             return
         
         raw_diff = response.text
+        
+        # Trigger Agent Node Sequence
         review_summary = execute_review_graph(raw_diff)
         
+        # Post the markdown analysis back onto the PR
         post_headers = {
-            "Authorization": f"token {github_token}",
+            "Authorization": f"token {GITHUB_TOKEN}",
             "Accept": "application/vnd.github.v3+json"
         }
         await client.post(comments_url, headers=post_headers, json={"body": review_summary})
 
-# Day 23 Webhook Receiver Endpoint
 @app.post("/webhook")
 async def github_webhook_listener(
     request: Request, 
     background_tasks: BackgroundTasks,
     x_github_event: str = Header(None)
 ):
+    # Only evaluate active pull request updates
     if x_github_event != "pull_request":
         return {"status": "ignored", "reason": "Not a pull_request event"}
         
     payload = await request.json()
     action = payload.get("action")
     
+    # Intercept when a PR is opened or new commits are pushed
     if action in ["opened", "synchronize"]:
         background_tasks.add_task(process_pr_review, payload)
         return {"status": "processing", "message": "Code review agent dispatched"}
         
     return {"status": "ignored", "reason": f"Action '{action}' not tracked"}
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
