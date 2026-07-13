@@ -10,6 +10,14 @@ from litellm import completion
 app = FastAPI(title="AI SaaS Backend Gateway")
 security = HTTPBearer()
 
+@app.get("/")
+def home_health_check():
+    return {
+        "status": "healthy", 
+        "workspace": "Day 24 Full-Stack SaaS",
+        "message": "Gateway engine is fully operational"
+    }
+
 # Enable CORS for frontend hosting
 app.add_middleware(
     CORSMiddleware,
