@@ -5,18 +5,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from supabase import create_client, Client
-from litellm import completion
+# ─── UPDATE: IMPORT BOTH COMPLETION AND EMBEDDING ───
+from litellm import completion, embedding
 
 app = FastAPI(title="AI SaaS Backend Gateway")
 security = HTTPBearer()
-
-@app.get("/")
-def home_health_check():
-    return {
-        "status": "healthy", 
-        "workspace": "Day 24 Full-Stack SaaS",
-        "message": "Gateway engine is fully operational"
-    }
 
 # Enable CORS for frontend hosting
 app.add_middleware(
@@ -31,6 +24,14 @@ app.add_middleware(
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+@app.get("/")
+def home_health_check():
+    return {
+        "status": "healthy", 
+        "workspace": "Day 24 Full-Stack SaaS",
+        "message": "Gateway engine is fully operational"
+    }
 
 class ChatRequest(BaseModel):
     message: str
@@ -54,12 +55,11 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Security(securi
 async def ingest_document(req: DocumentRequest, user=Depends(get_current_user)):
     """Chunks text data, generates embeddings, and saves to vector store"""
     try:
-        # Simple paragraph chunk strategy
         chunks = [c.strip() for c in req.content.split("\n\n") if c.strip()]
         
         for chunk in chunks:
-            # Generate vectors via LiteLLM
-            embedding_res = completion(
+            # ─── FIX: USE EMBEDDING() FOR VECTORS ───
+            embedding_res = embedding(
                 model="openrouter/openai/text-embedding-3-small",
                 input=[chunk]
             )
@@ -80,14 +80,14 @@ async def ingest_document(req: DocumentRequest, user=Depends(get_current_user)):
 async def chat_stream_endpoint(req: ChatRequest, user=Depends(get_current_user)):
     """Executes RAG similarity lookups and streams response tokens back"""
     try:
-        # 1. Embed query prompt
-        query_res = completion(
+        # ─── FIX: USE EMBEDDING() FOR VECTORS ───
+        query_res = embedding(
             model="openrouter/openai/text-embedding-3-small",
             input=[req.message]
         )
         query_vector = query_res['data'][0]['embedding']
         
-        # 2. Query vector DB context using the RPC match function
+        # Query vector DB context using the RPC match function
         rpc_res = supabase.rpc("match_documents", {
             "query_embedding": query_vector,
             "match_threshold": 0.3,
@@ -101,7 +101,7 @@ async def chat_stream_endpoint(req: ChatRequest, user=Depends(get_current_user))
         # Log user request message to chat history table
         supabase.table("chat_history").insert({"user_id": user.id, "role": "user", "message": req.message}).execute()
 
-        # 3. Stream token responses via LiteLLM
+        # Stream token responses via LiteLLM completion
         def token_generator():
             system_prompt = f"You are an elite AI system assistant. Answer the user prompt strictly using the verified context below:\n\n{context_str}"
             
