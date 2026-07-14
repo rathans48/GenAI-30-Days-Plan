@@ -32,6 +32,7 @@ A structured, production-focused roadmap tracking development patterns from theo
 | **Day 22** | Containerization | Dockerization, Cloud PaaS Deployment, & GitHub Actions CI/CD Pipelines | ⚡ Completed |
 | **Day 23** | AI DevOps Agents | Webhook Interception, Multi-Agent Structured Graph Reviewers, & Code Embeddings | ⚡ Completed |
 | **Day 24** | Week 3 Review | Full-Stack RAG, Supabase Auth, Streaming Response Windows, & PostgreSQL pgvector Stores | ⚡ Completed |
+| **Day 25-30** | Capstone Project Devmind | Multi-Agent Coding Setup | Check Repository: https://github.com/rathans48/Devmind
 ---
 
 ## Active Implementation Repositories
